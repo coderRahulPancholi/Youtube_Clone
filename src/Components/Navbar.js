@@ -18,6 +18,13 @@ export default function Navbar(props) {
                 
             </Input>
 
+            <Profile>
+                <img src="" alt="" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+
+            </Profile>
+
 
             
 
@@ -33,13 +40,14 @@ export default function Navbar(props) {
 
 const Nav = styled.div`
 width: 100vw;
-height: 100px;
+height: 70px;
 /* padding: 15px; */
 z-index: 999;
 
 `
 
 const Img = styled.div`
+min-width: 25%;
 height: 100%;
 display: flex;
 justify-content: center;
@@ -53,12 +61,12 @@ display: flex;
 /* flex-direction: column; */
 /* background-color: antiquewhite; */
 align-items: center;
-justify-content: center;
+justify-content: flex-start;
 gap: 20px;
 
 `
 const Input = styled.div`
-width: 90%;
+min-width: 50%;
 max-width: 500px;
 margin: 10px;
 box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
@@ -94,7 +102,9 @@ div{
     background-color: transparent;
   }
 }
-
+`
+const Profile = styled.div`
+min-width: 25%;
 
 
 `

@@ -4,12 +4,16 @@ import styled from 'styled-components';
 import Navbar from '../Components/Navbar';
 import {API_KEY} from '../Key';
 
+import { Cate } from '../Data/cat';
+
 
 export default function Data() {
 
     const[video ,setVideo] = useState([])
     const[search ,setSearch] = useState("")
     const[loading ,setLoading] = useState(false)
+    const[sVideo ,setSvideo] = useState([])
+
 
 
 
@@ -60,6 +64,15 @@ export default function Data() {
         videos();
       }
     };
+    const play = (id) => {
+      const flvideo = video.find((elem) => {
+        return elem.id === id
+
+      })
+      console.log(flvideo)
+      setSvideo(flvideo)
+     
+    };
 
     const searchbtn = () => {
         videos();
@@ -85,18 +98,37 @@ export default function Data() {
 
 
 
+<Container>
+  <Category>
+  <div className='cathe'> 
+  {Cate.map((e)=>{
+    return(
 
+     
+        <p className="cath">{e.name}</p>
+
+     
+        
+)
+  })
+
+  }
+  </div>
+  </Category>
 
         <Videos>
 
-            {loading?<p>Loading....</p> :video.map((e,id)=>{
+            {loading?<p>Loading....</p> :video.map((e)=>{
                 return( 
 
                  
 
-            <Video key={id}>
+            <Video key={e.id} onClick ={() => play(e.id)}>
                 <Thumb>
+                  <a href={`https://www.youtube.com/watch?v=${sVideo.id}`}>
+
                     <img src={e.snippet.thumbnails.medium.url} alt="" />
+                  </a>
 
                 </Thumb>
                 <Title>
@@ -121,6 +153,7 @@ export default function Data() {
           
 
         </Videos>
+        </Container>
 
       
     </Main>
@@ -143,16 +176,90 @@ const Menus = styled.div`
 width: 15%;
 height: 100%;
 `
-const Videos = styled.div`
 
+const Container = styled.div`
 width: 85%;
 height: 100%;
 display: flex;
-gap: 20px;
+flex-direction: column;
+justify-content: flex-start;
+align-items: center;
+
+`
+const Category = styled.div`
+width: 100%;
+height: 10%;
+display: flex;
+align-items: center;
+
+
+
+
+
+.cathe{
+ 
+  display: flex;
+gap: 15px;
+justify-content: flex-start;
+align-items: center;
+overflow-x: scroll;
+
+
+  ::-webkit-scrollbar{
+  display: none;
+}
+
+.cath{
+  padding: 5px 10px;
+  text-align: center;
+  background-color: #272727;
+  border-radius: 7px;
+  min-width: fit-content;
+ 
+
+}
+
+}
+
+
+
+`
+const Videos = styled.div`
+
+width: 100%;
+height: 90%;
+display: flex;
+/* gap: 15px; */
 flex-wrap: wrap;
-justify-content: center;
+justify-content: flex-start;
 align-items: center;
 overflow-y: scroll;
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 50px;
+
+  ::hover{
+    background-color: white;
+
+  }
+  
+}
+ 
+::-webkit-scrollbar-track {
+  background-color: transparent;
+
+  
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  
+
+ 
+}
 
 `
 
