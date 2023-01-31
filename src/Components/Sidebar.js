@@ -159,6 +159,8 @@ div{
 @media only screen and (max-width: 840px){
 
     flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
     
     
 }

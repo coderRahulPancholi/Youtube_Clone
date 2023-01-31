@@ -86,6 +86,7 @@ export default function Data() {
       }, []);
   return (
     <>
+
     
       <Navbar navtitle = "VideoApp" sets = {setSearch}  keyenter={keyPress}  searchclick = {searchbtn}/>
 
@@ -93,8 +94,7 @@ export default function Data() {
     <Main>
       <Menus>
         <Sidebar/>
-
-      </Menus>
+        </Menus>
 
 
        
@@ -159,6 +159,10 @@ export default function Data() {
 
       
     </Main>
+
+    <Mmenu>
+      <Sidebar/>
+    </Mmenu>
     </>
   )
 }
@@ -179,11 +183,20 @@ width: 15%;
 height: 100%;
 
 @media only screen and (max-width: 840px){
-  width: 100%;
-height: 100px;
-position: fixed;
-bottom: 0;
+ display: none;
+}
+`
+const Mmenu = styled.div`
+display: none;
 
+@media only screen and (max-width: 840px){
+  width: 100%;
+  padding: 10px;
+  /* height: 100px; */
+ display: flex;
+ align-items: center;
+ position: fixed;
+ bottom: 0;
 
 }
 `
