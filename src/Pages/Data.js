@@ -5,6 +5,7 @@ import Navbar from '../Components/Navbar';
 import {API_KEY} from '../Key';
 
 import { Cate } from '../Data/cat';
+import Sidebar from '../Components/Sidebar';
 
 
 export default function Data() {
@@ -12,7 +13,7 @@ export default function Data() {
     const[video ,setVideo] = useState([])
     const[search ,setSearch] = useState("")
     const[loading ,setLoading] = useState(false)
-    const[sVideo ,setSvideo] = useState([])
+    // const[sVideo ,setSvideo] = useState([])
 
 
 
@@ -64,15 +65,16 @@ export default function Data() {
         videos();
       }
     };
-    const play = (id) => {
-      const flvideo = video.find((elem) => {
-        return elem.id === id
+    // const play = (id) => {
+    //   const flvideo = video.find((elem) => {
+    //     return elem.id === id
 
-      })
-      console.log(flvideo)
-      setSvideo(flvideo)
+    //   })
+    //   console.log(flvideo)
+    //   setSvideo(flvideo)
+      
      
-    };
+    // };
 
     const searchbtn = () => {
         videos();
@@ -90,6 +92,7 @@ export default function Data() {
 
     <Main>
       <Menus>
+        <Sidebar/>
 
       </Menus>
 
@@ -123,12 +126,11 @@ export default function Data() {
 
                  
 
-            <Video key={e.id} onClick ={() => play(e.id)}>
+            <Video key={e.id} >
                 <Thumb>
-                  <a href={`https://www.youtube.com/watch?v=${sVideo.id}`}>
 
                     <img src={e.snippet.thumbnails.medium.url} alt="" />
-                  </a>
+                
 
                 </Thumb>
                 <Title>
@@ -175,7 +177,17 @@ display: flex;
 const Menus = styled.div`
 width: 15%;
 height: 100%;
+
+@media only screen and (max-width: 840px){
+  width: 100%;
+height: 100px;
+position: fixed;
+bottom: 0;
+
+
+}
 `
+
 
 const Container = styled.div`
 width: 85%;
@@ -185,19 +197,24 @@ flex-direction: column;
 justify-content: flex-start;
 align-items: center;
 
+@media only screen and (max-width: 840px){
+width: 100%;
+}
+
 `
 const Category = styled.div`
 width: 100%;
 height: 10%;
 display: flex;
 align-items: center;
+justify-content: center;
 
 
 
 
 
 .cathe{
- 
+ width: 90%;
   display: flex;
 gap: 15px;
 justify-content: flex-start;
@@ -231,7 +248,7 @@ height: 90%;
 display: flex;
 /* gap: 15px; */
 flex-wrap: wrap;
-justify-content: flex-start;
+justify-content: center;
 align-items: center;
 overflow-y: scroll;
 
@@ -276,6 +293,9 @@ display: flex;
 flex-direction: column;
 justify-content: flex-start;
 align-items: center;
+
+
+
 
 
 
